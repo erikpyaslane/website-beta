@@ -5,6 +5,7 @@ import * as VueRouter from 'vue-router'
 import ContactPage from './pages/ContactPage.vue'
 import ProjectsPage from './pages/ProjectsPage.vue'
 import OpenPage from './pages/OpenPage.vue'
+import ProjectDetailPage from './pages/ProjectDetailPage.vue'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -14,6 +15,10 @@ const router = VueRouter.createRouter({
     history: VueRouter.createWebHistory(process.env.BASE_URL),
     routes: [
         {
+            path: '/',
+            component: OpenPage,
+        },
+        {
             path: '/contact',
             component: ContactPage,
         },
@@ -22,8 +27,8 @@ const router = VueRouter.createRouter({
             component: ProjectsPage,
         },
         {
-            path: '/',
-            component: OpenPage,
+            path: '/projects/:projectModifiedName',
+            component: ProjectDetailPage,
         },
 
     ],

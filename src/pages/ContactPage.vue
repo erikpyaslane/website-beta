@@ -66,7 +66,7 @@
             ></textarea>
           </div>
 
-          <div class="col-12 py-2">
+          <div class="col-12 py-2 justify-content-start">
             <label class="form-label" for="projectName"> Vali huvitatav projekt: </label>
             <select
               v-model="formData.projectName"
@@ -142,8 +142,12 @@ export default {
   flex-direction: column;
 }
 
+.form-label {
+    text-align: start;
+}
+
 label {
-  font-weight: bold;
+  text-align: start;
 }
 
 input,

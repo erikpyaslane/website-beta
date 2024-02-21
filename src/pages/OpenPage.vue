@@ -1,18 +1,42 @@
 <template>
   <section class="bg">
     <NavigationBar />
+    <IntroSection />
+  </section>
+  <section style="height: 100vh">
+    <div class="row w-100 pt-5 pb-5 p-0 fade-in">
+      <h1>
+        Projektid
+        <span class="text">
+          <router-link to="/projects" class="button-59 fade-in"
+            >Vaata lähemalt ➔
+          </router-link>
+        </span>
+      </h1>
+    </div>
+
+    <SlidesComponent v-if="projects.length > 0" :projects="projects" />
+  </section>
+  <section class="s3">
+    <div class="pb-2 pt-5">
+      <h1>Ajalugu</h1>
+    </div>
+    <TimeLine :histories="histories" @itemInView="updateHistoryInView" />
   </section>
   <button v-if="showButton" @click="scrollToTop" class="scroll-top-btn"></button>
 </template>
 
 <script>
 import NavigationBar from "@/components/NavigationBar.vue";
+import IntroSection from "@/components/IntroSection.vue";
+import SlidesComponent from "../components/SlidesComponent";
+import TimeLine from "@/components/TimeLine.vue";
 
 export default {
   name: "OpenPage",
   data() {
     return {
-      histories: [
+      projects: [
         {
           id: "1",
           name: "Dog 1",
@@ -22,38 +46,61 @@ export default {
         },
         {
           id: "2",
-          name: "Dog 2",
-          modified_name: "dog2",
-          description: "Tegeleb lohnadega",
-          imageURL: "/images/dog2.jpg",
+          name: "Raagime",
+          modified_name: "raagime",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar massa vel commodo accumsan. Donec hendrerit ante quis arcu rutrum fermentum. Proin posuere lorem ante, eget gravida lorem ullamcorper sit amet. Integer lectus enim, molestie vel eros sed, porttitor molestie urna. Cras id blandit ex, ut consectetur nisi. Maecenas sed fermentum arcu. Duis sed auctor diam. In vitae convallis lorem. Suspendisse ullamcorper arcu vel mi euismod, nec tempus diam dignissim.",
+          imageURL: "/images/raagime.jpg",
         },
         {
           id: "3",
-          name: "Dog 3",
-          modified_name: "dog3",
-          description: "Tegeleb lohnadega",
-          imageURL: "/images/dog3.jpg",
+          name: "Tartu Ulikool",
+          modified_name: "ut",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar massa vel commodo accumsan. Donec hendrerit ante quis arcu rutrum fermentum. Proin posuere lorem ante, eget gravida lorem ullamcorper sit amet. Integer lectus enim, molestie vel eros sed, porttitor molestie urna. Cras id blandit ex, ut consectetur nisi. Maecenas sed fermentum arcu. Duis sed auctor diam. In vitae convallis lorem. Suspendisse ullamcorper arcu vel mi euismod, nec tempus diam dignissim.",
+          imageURL: "/images/tartukool.jpg",
         },
         {
           id: "4",
           name: "Dog 4",
           modified_name: "dog4",
-          description: "Tegeleb lohnadega",
-          imageURL: "/images/dog4.jpg",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar massa vel commodo accumsan. Donec hendrerit ante quis arcu rutrum fermentum. Proin posuere lorem ante, eget gravida lorem ullamcorper sit amet. Integer lectus enim, molestie vel eros sed, porttitor molestie urna. Cras id blandit ex, ut consectetur nisi. Maecenas sed fermentum arcu. Duis sed auctor diam. In vitae convallis lorem. Suspendisse ullamcorper arcu vel mi euismod, nec tempus diam dignissim.",
+          imageURL: "/images/dog1.jpg",
         },
         {
           id: "5",
           name: "Muusika",
           modified_name: "muusika",
-          description: "Tegeleb muusikaga",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar massa vel commodo accumsan. Donec hendrerit ante quis arcu rutrum fermentum. Proin posuere lorem ante, eget gravida lorem ullamcorper sit amet. Integer lectus enim, molestie vel eros sed, porttitor molestie urna. Cras id blandit ex, ut consectetur nisi. Maecenas sed fermentum arcu. Duis sed auctor diam. In vitae convallis lorem. Suspendisse ullamcorper arcu vel mi euismod, nec tempus diam dignissim.",
+          
           imageURL: "/images/music.jpg",
         },
+      ],
+      histories: [
+        {
+            text: "Quisque sit amet sem at quam posuere sollicitudin. Etiam malesuada leo sed orci pellentesque, sed suscipit orci vehicula. Curabitur congue tristique lacus hendrerit accumsan.", 
+            imageURL: "/images/tartukool.jpg",
+        },{
+            text: "Quisque sit amet sem at quam posuere sollicitudin. Etiam malesuada leo sed orci pellentesque, sed suscipit orci vehicula. Curabitur congue tristique lacus hendrerit accumsan.", 
+            imageURL: "/images/tartukool.jpg",
+        },{
+            text: "Quisque sit amet sem at quam posuere sollicitudin. Etiam malesuada leo sed orci pellentesque, sed suscipit orci vehicula. Curabitur congue tristique lacus hendrerit accumsan.", 
+            imageURL: "/images/tartukool.jpg",
+        },{
+            text: "Quisque sit amet sem at quam posuere sollicitudin. Etiam malesuada leo sed orci pellentesque, sed suscipit orci vehicula. Curabitur congue tristique lacus hendrerit accumsan.", 
+            imageURL: "/images/tartukool.jpg",
+        },{
+            text: "Quisque sit amet sem at quam posuere sollicitudin. Etiam malesuada leo sed orci pellentesque, sed suscipit orci vehicula. Curabitur congue tristique lacus hendrerit accumsan.", 
+            imageURL: "/images/tartukool.jpg",
+        }
       ],
       showButton: false,
     };
   },
   components: {
     NavigationBar,
+    IntroSection,
+    SlidesComponent,
+    TimeLine,
   },
   async created() {
     window.scrollTo(0, 0);
@@ -88,7 +135,7 @@ export default {
 
 <style scoped>
 .bg {
-  /*background-image: url("/public/images/back2.jpg");*/
+  background-image: url("/public/images/back2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -96,7 +143,11 @@ export default {
   width: 100%; /* Cover the entire width of the viewport */
   margin: 0; /* Remove any default margin */
   padding: 0;
-  color: white
+  color: white;
+}
+
+.s3 {
+  background-color: #ebc898;
 }
 
 .scroll-top-btn {
@@ -123,5 +174,16 @@ export default {
   display: inline-block;
   padding: 5px;
   transform: rotate(-135deg);
+}
+
+h1 {
+  text-align: center;
+  font-size: 50px;
+  font-family: "Snell Roundhand", cursive;
+}
+
+.text {
+  font-size: 30px;
+  font-family: "Snell Roundhand", cursive;
 }
 </style>
