@@ -136,6 +136,7 @@ export default {
 <style scoped>
 .bg {
   background-image: url("/public/images/back2.jpg");
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

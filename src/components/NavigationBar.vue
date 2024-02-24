@@ -1,43 +1,85 @@
 <template>
-  <nav class="stroke row align-self-center justify-content-center" id="mainNav">
-    <div class="col-sm-8 m-0 py-1 justify-content-center">
-      <ul class="nav nav-pills flex-row py-0 justify-content-end align-items-center">
-        <li class="nav-item py-1 px-4 mr-5 ml-5">
-          <router-link to="/projects"> PROJEKTID </router-link>
-        </li>
-        <li class="nav-item py-1 px-4 mr-5 ml-5">
-          <router-link to="/">MINUST</router-link>
-        </li>
-        <li class="nav-item py-1 px-4 ml-5">
-          <router-link to="/contact">KONTAKT</router-link>
-        </li>
-      </ul>
-    </div>
-    <div class="col-sm-4 justify-content-end align-items-center">
-      <ul class="nav py-0 justify-content-end">
-        <li>
-          <!-- <a href="https://www.freepik.com/free-vector/instagram-vector-social-media-icon-7-june-2021-bangkok-thailand_18246125.htm#
-                      query=instagram%20logo&position=0&from_view=keyword&track=ais&uuid=4ae88f2d-2d5d-43d8-acff-8e87dea1479b"> -->
-          <a
-            ><img
-              src="/images/insta.png"
-              title="Image by rawpixel.com"
-              width="40"
-              height="40"
-          /></a>
-        </li>
-        <li>
-          <a
-            ><img
-              src="/images/facebook.png"
-              title="Image by rawpixel.com"
-              width="40"
-              height="40"
-          /></a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <div v-if="!isMobile()">
+    <nav class="stroke row align-self-center align-items-center justify-content-center" id="mainNav">
+      <div class="col-sm-8 m-0 py-1 justify-content-center">
+        <ul class="nav nav-pills flex-row py-0 justify-content-end align-items-center">
+          <li class="nav-item py-1 px-4 mr-5 ml-5">
+            <router-link to="/projects"> PROJEKTID </router-link>
+          </li>
+          <li class="nav-item py-1 px-4 mr-5 ml-5">
+            <router-link to="/">MINUST</router-link>
+          </li>
+          <li class="nav-item py-1 px-4 ml-5">
+            <router-link to="/contact">KONTAKT</router-link>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-4 justify-content-end align-items-center">
+        <ul class="nav py-0 justify-content-end">
+          <li>
+            <a
+              ><img
+                src="/images/insta.png"
+                title="Image by rawpixel.com"
+                width="40"
+                height="40"
+            /></a>
+          </li>
+          <li>
+            <a
+              ><img
+                src="/images/facebook.png"
+                title="Image by rawpixel.com"
+                width="40"
+                height="40"
+            /></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div v-else>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <router-link class="navbar-brand" to="/">Your Brand</router-link>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/projects">PROJEKTID</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/">MINUST</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/contact">KONTAKT</router-link>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <img src="/images/insta.png" title="Instagram" width="40" height="40" />
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <img src="/images/facebook.png" title="Facebook" width="40" height="40" />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
 </template>
 
 <script>
@@ -47,6 +89,14 @@ export default {
     return {
       projects: [],
     };
+  },
+  
+  methods: {
+    isMobile() {
+      console.log(window.innerWidth);
+      if (window.innerWidth < 1000) return true;
+      return false;
+    },
   },
 };
 </script>
@@ -65,6 +115,7 @@ export default {
 
 #mainNav ul {
   list-style: none;
+  align-self: center;
 }
 
 #mainNav ul li {

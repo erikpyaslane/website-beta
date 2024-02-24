@@ -45,7 +45,10 @@
           <p class="fade-in">{{ displayedProject.description }}</p>
           <div class="flex-d row align-self-end align-items-end justify-content-center">
             <div class="col-md-4 fade-in">
-              <button @click="redirectToProject">Vaata lähemalt</button>
+              <!-- Use router-link to navigate to the project details route -->
+              <router-link :to="'/projects/' + displayedProject.modified_name">
+                <button>Vaata lähemalt</button>
+              </router-link>
             </div>
             <div class="col-md-4 fade-in">
               <a :href="formattedWebsiteURL" target="_blank" v-if="displayedProject.websiteURL">
@@ -110,12 +113,6 @@ export default {
     },
     handleSlideChange(index) {
       this.currentProject = index;
-    },
-    redirectToProject() {
-      if (this.displayedProject && this.displayedProject.modified_name) {
-        const projectUrl = "/projects/" + this.displayedProject.modified_name;
-        window.open(projectUrl, "_blank"); // Open link in a new tab
-      }
     },
   },
 };

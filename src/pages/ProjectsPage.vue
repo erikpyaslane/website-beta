@@ -17,13 +17,6 @@ export default {
     return {
         projects: [
         {
-          id: "1",
-          name: "Dog 1",
-          modified_name: "dog1",
-          description: "Tegeleb lohnadega",
-          imageURL: "/images/dog1.jpg",
-        },
-        {
           id: "2",
           name: "Raagime",
           modified_name: "raagime",
@@ -40,8 +33,8 @@ export default {
         },
         {
           id: "4",
-          name: "Dog 4",
-          modified_name: "dog4",
+          name: "Lohnaturundus",
+          modified_name: "lohnaturundus",
           description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pulvinar massa vel commodo accumsan. Donec hendrerit ante quis arcu rutrum fermentum. Proin posuere lorem ante, eget gravida lorem ullamcorper sit amet. Integer lectus enim, molestie vel eros sed, porttitor molestie urna. Cras id blandit ex, ut consectetur nisi. Maecenas sed fermentum arcu. Duis sed auctor diam. In vitae convallis lorem. Suspendisse ullamcorper arcu vel mi euismod, nec tempus diam dignissim.",
           imageURL: "/images/dog1.jpg",
         },
