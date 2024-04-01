@@ -1,19 +1,35 @@
 <template>
-  <section class="bg">
-    <NavigationBar />
-    <IntroSection />
-  </section>
-  <section style="height: 100vh">
-    <div class="row w-100 pt-5 pb-5 p-0 fade-in">
-      <h1>
-        Projektid
-        <span class="text">
-          <router-link to="/projects" class="button-59 fade-in"
-            >Vaata lähemalt ➔
-          </router-link>
-        </span>
-      </h1>
-    </div>
+  <div v-if="isLoaded" class="s-page">
+
+    <section class="bg">
+      <NavigationBar />
+      <IntroSection/>
+    </section>
+    <Transition appear>
+      <section class="s2" style="height: 100vh; background-color: white">
+        <div class="row w-100 pt-5 pb-5 p-0 fade-in">
+          <h1>
+            Projektid
+            <span class="text">
+              <router-link to="/projects" class="button-59 fade-in"
+                >Vaata lähemalt ➔
+              </router-link>
+            </span>
+          </h1>
+        </div>
+
+        <SlidesComponent v-if="projects.length > 0" :projects="projects" />
+      </section>
+    </Transition>
+
+    <section class="s3">
+      <div class="pb-2 pt-5">
+        <h1>Ajalugu</h1>
+      </div>
+      <TimeLine :histories="histories" @itemInView="updateHistoryInView" />
+    </section>
+  </div>
+</template>
 
     <SlidesComponent v-if="projects.length > 0" :projects="projects" />
   </section>
@@ -135,7 +151,7 @@ export default {
 
 <style scoped>
 .bg {
-  background-image: url("/public/images/back2.jpg");
+  background-image: url("/public/images/back3-min.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
