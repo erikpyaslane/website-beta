@@ -31,17 +31,6 @@
   </div>
 </template>
 
-    <SlidesComponent v-if="projects.length > 0" :projects="projects" />
-  </section>
-  <section class="s3">
-    <div class="pb-2 pt-5">
-      <h1>Ajalugu</h1>
-    </div>
-    <TimeLine :histories="histories" @itemInView="updateHistoryInView" />
-  </section>
-  <button v-if="showButton" @click="scrollToTop" class="scroll-top-btn"></button>
-</template>
-
 <script>
 import NavigationBar from "@/components/NavigationBar.vue";
 import IntroSection from "@/components/IntroSection.vue";
